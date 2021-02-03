@@ -29,3 +29,11 @@ export declare class Peer extends EventEmitter {
     createReadStream(channel: number): Stream.Readable | undefined;
     createDuplexStream(channel: number): Stream.Duplex | undefined;
 }
+export declare interface Peer {
+    on(event: "connect", listener: () => void): this;
+    on(event: "message", listener: (packet: Packet, channel: number) => void): this;
+    on(event: "disconnect", listener: (code?: number) => void): this;
+    emit(event: "connect"): boolean;
+    emit(event: "message", packet: Packet, channel: number): boolean;
+    emit(event: "disconnect", code?: number): boolean;
+}

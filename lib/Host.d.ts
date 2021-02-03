@@ -53,4 +53,24 @@ export declare class Host extends EventEmitter {
     firstStart(): void;
     start(ms_interval: number): void;
 }
+export declare interface Host {
+    on(event: "error", listener: (err: any) => void): this;
+    on(event: "connect", listener: (peer: Peer, data: number, initiatedByMe: boolean) => void): this;
+    on(event: "telex", listener: (data: Buffer | undefined, sender: {
+        address: string;
+        port: number;
+    }) => void): this;
+    on(event: "message", listener: (peer: Peer, packet: Packet, channel: number) => void): this;
+    on(event: "disconnect", listener: () => void): this;
+    on(event: "destroy", listener: () => void): this;
+    emit(event: "error", err: any): boolean;
+    emit(event: "connect", peer: Peer, data: number | undefined, initiatedByMe: boolean): boolean;
+    emit(event: "telex", data: Buffer | undefined, sender: {
+        address?: string;
+        port?: number;
+    }): boolean;
+    emit(event: "message", peer: Peer, packet: Packet, channel: number): boolean;
+    emit(event: "disconnect", code?: number): boolean;
+    emit(event: "destroy"): boolean;
+}
 export {};

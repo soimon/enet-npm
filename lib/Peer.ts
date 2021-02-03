@@ -256,3 +256,19 @@ export class Peer extends EventEmitter {
         return s;
     }
 }
+
+export declare interface Peer {
+    // Listeners
+    on(event: "connect", listener: () => void): this;
+    on(
+        event: "message",
+        listener: (packet: Packet, channel: number) => void
+    ): this;
+    on(event: "disconnect", listener: (code?: number) => void): this;
+
+    // Emitters
+
+    emit(event: "connect"): boolean;
+    emit(event: "message", packet: Packet, channel: number): boolean;
+    emit(event: "disconnect", code?: number): boolean;
+}
