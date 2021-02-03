@@ -1,23 +1,31 @@
-const ENETModule = require("./build/enet.js");
-const jsapi_ = ENETModule.jsapi;
-
-export const Host = require("./lib/Host.js").Host;
-export const createServer = require("./lib/Host.js").createServer;
-export const createClient = require("./lib/Host.js").createClient;
-export const createServerFromSocket = require("./lib/Host.js").createServerFromSocket;
-export const Event = require("./lib/Event.js").Event;
-export const Address = require("./lib/Address.js").Address;
-export const Packet = require("./lib/Packet.js").Packet;
-export const Peer = require("./lib/Peer.js").Peer;
-export const Buffer = require("buffer").Buffer; //for use in chrome app when creating packets
-export const PACKET_FLAG = require("./lib/PACKET_FLAG.js").PACKET_FLAG;
-export const PEER_STATE = require("./lib/PEER_STATE.js").PEER_STATE;
-
-export const init = function (func) {
-	var funcPointer = ENETModule["Runtime_addFunction"](function (host_ptr) {
-		var addr = new Address(jsapi_.host_get_receivedAddress(host_ptr));
-		return func(addr.address(), addr.port());
-	});
-	jsapi_.init(funcPointer);
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.init = exports.PEER_STATES = exports.PACKET_FLAG = exports.Peer = exports.Packet = exports.Address = exports.Event = exports.createServerFromSocket = exports.createServer = exports.createClient = exports.Host = void 0;
+var Address_1 = require("./lib/Address");
+var ENETModule = require("./build/enet.js");
+var jsapi_ = ENETModule.jsapi;
+var Host_1 = require("./lib/Host");
+Object.defineProperty(exports, "Host", { enumerable: true, get: function () { return Host_1.Host; } });
+Object.defineProperty(exports, "createClient", { enumerable: true, get: function () { return Host_1.createClient; } });
+Object.defineProperty(exports, "createServer", { enumerable: true, get: function () { return Host_1.createServer; } });
+Object.defineProperty(exports, "createServerFromSocket", { enumerable: true, get: function () { return Host_1.createServerFromSocket; } });
+var Event_1 = require("./lib/Event");
+Object.defineProperty(exports, "Event", { enumerable: true, get: function () { return Event_1.Event; } });
+var Address_2 = require("./lib/Address");
+Object.defineProperty(exports, "Address", { enumerable: true, get: function () { return Address_2.Address; } });
+var Packet_1 = require("./lib/Packet");
+Object.defineProperty(exports, "Packet", { enumerable: true, get: function () { return Packet_1.Packet; } });
+var Peer_1 = require("./lib/Peer");
+Object.defineProperty(exports, "Peer", { enumerable: true, get: function () { return Peer_1.Peer; } });
+var PACKET_FLAG_1 = require("./lib/PACKET_FLAG");
+Object.defineProperty(exports, "PACKET_FLAG", { enumerable: true, get: function () { return PACKET_FLAG_1.PACKET_FLAG; } });
+var PEER_STATE_1 = require("./lib/PEER_STATE");
+Object.defineProperty(exports, "PEER_STATES", { enumerable: true, get: function () { return PEER_STATE_1.PEER_STATES; } });
+var init = function (func) {
+    var funcPointer = ENETModule["Runtime_addFunction"](function (host_ptr) {
+        var addr = new Address_1.Address(jsapi_.host_get_receivedAddress(host_ptr));
+        return func(addr.address(), addr.port());
+    });
+    jsapi_.init(funcPointer);
 };
-
+exports.init = init;

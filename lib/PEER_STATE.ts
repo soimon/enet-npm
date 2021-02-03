@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.PEER_STATES = void 0;
-exports.PEER_STATES = {
+export const PEER_STATES = {
     DISCONNECTED: 0,
     CONNECTING: 1,
     ACKNOWLEDGING_CONNECT: 2,
@@ -12,4 +9,5 @@ exports.PEER_STATES = {
     DISCONNECTING: 7,
     ACKNOWLEDGING_DISCONNECT: 8,
     ZOMBIE: 9,
-};
+} as const;
+export type PEER_STATE = typeof PEER_STATES[keyof typeof PEER_STATES];
