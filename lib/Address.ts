@@ -51,7 +51,7 @@ export class Address {
         }
         if (args.length == 1 && typeof args[0] == "string") {
             const ipp = args[0].split(":");
-            this._host = ip2long(ipp[0]);
+            this._host = ip2long(ipp[0] || "0.0.0.0");
             this._port = parseInt(ipp[1] || "0");
             return this;
         }

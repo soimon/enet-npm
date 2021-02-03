@@ -229,11 +229,12 @@ export class Host extends EventEmitter {
                                 ptr
                             ];
                             delete this._packet_callback_functions[ptr];
-                            callback(
-                                packet.wasSent()
-                                    ? undefined
-                                    : new Error("packet-not-delivered")
-                            );
+                            if (callback)
+                                callback(
+                                    packet.wasSent()
+                                        ? undefined
+                                        : new Error("packet-not-delivered")
+                                );
                             return;
                         }
                     });
@@ -256,7 +257,7 @@ export class Host extends EventEmitter {
         return this.isOffline() === false;
     }
     _service() {
-        let peer: Peer;
+        let peer: Peer | undefined;
         var recvdAddr;
         if (this._servicing) return;
         this._servicing = true;
