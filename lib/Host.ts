@@ -37,12 +37,12 @@ export function createServerFromSocket(
 }
 
 export type HostOptions = {
-    address: AddressType;
-    peers: number;
-    channels: number;
-    down: number;
-    up: number;
-    socket: any;
+    address?: AddressType;
+    peers?: number;
+    channels?: number;
+    down?: number;
+    up?: number;
+    socket?: any;
 };
 
 function createHost(
