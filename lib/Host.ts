@@ -383,7 +383,7 @@ export class Host extends EventEmitter {
             port: addr.port(),
         };
     }
-    address() {
+    address(): { address: string; port: number } | undefined {
         if (this.isOffline()) return;
         return this._socket.address();
     }

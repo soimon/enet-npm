@@ -41,7 +41,10 @@ export declare class Host extends EventEmitter {
         address: string;
         port: number;
     } | undefined;
-    address(): any;
+    address(): {
+        address: string;
+        port: number;
+    } | undefined;
     send(ip: string, port: number, buff: Buffer, callback?: Callback<number>): void;
     flush(): void;
     connect(address: AddressType, channelCount?: number, data?: number, callback?: Callback<Peer>): Peer | undefined;
