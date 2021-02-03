@@ -439,7 +439,7 @@ export class Host extends EventEmitter {
         }
 
         if (typeof callback === "function") {
-            setTimeout(function () {
+            setImmediate(function () {
                 callback(new Error("maxpeers"));
             });
         }
