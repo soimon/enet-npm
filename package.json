@@ -2,6 +2,7 @@
     "name": "enet",
     "version": "v1.2.9",
     "main": "index.js",
+    "types": "index.d.ts",
     "description": "The ENet Networking Library cross compiled to javascript",
     "keywords": [
         "enet",
